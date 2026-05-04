@@ -1,0 +1,9 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: practice
+  labels:
+    name: practice
+  annotations:
+    description: "This is a practice namespace for learning Kubernetes."
+    owner: "Avi Sharma"

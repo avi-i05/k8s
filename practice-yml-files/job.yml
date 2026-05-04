@@ -1,0 +1,19 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: hello-job
+  namespace: practice
+spec:
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      name: hello-job-pod
+      labels:
+        app: hello-job
+    spec:
+      containers:
+      - name: hello
+        image: busybox
+        command: ["echo", "Hello, Kubernetes! && sleep 10"]
+      restartPolicy: Never

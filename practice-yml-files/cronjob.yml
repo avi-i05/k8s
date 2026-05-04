@@ -1,0 +1,22 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: hello-cronjob
+  namespace: practice
+spec:
+  schedule: "*/1 * * * *" # Every minute
+  jobTemplate:
+    spec:
+      completions: 1
+      parallelism: 1
+      template:
+        metadata:
+          name: hello-cronjob-pod
+          labels:
+            app: hello-cronjob
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            command: ["echo", "Hello, Kubernetes! && sleep 10"]
+          restartPolicy: Never
