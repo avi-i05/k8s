@@ -1,8 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
-  name: nginx-deployment
+  name: nginx-replicasets
   namespace: nginx
+  annotations:
+    owner: "avi"
+    description: "replicaset pods"
 spec:
   replicas: 1
   selector:

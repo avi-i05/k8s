@@ -1,16 +1,18 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
-  name: nginx-deployment
+  name: nginx-daemonsets
   namespace: nginx
+  annotations:
+    owner: "avi"
+    description: "demonset pods"
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: nginx
   template:
     metadata:
-      name: nginx-dep-pod
+      name: nginx-dae-pod
       labels:
         app: nginx
     spec:
